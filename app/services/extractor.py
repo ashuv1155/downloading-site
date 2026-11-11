@@ -29,6 +29,9 @@ class ExtractorService:
 
         if provider_name == "mock":
             return MockExtractionProvider()
+        elif provider_name in ("ytdlp", "yt-dlp", "real"):
+            from app.services.ytdlp_provider import YtDlpExtractionProvider
+            return YtDlpExtractionProvider(timeout_seconds=settings.REQUEST_TIMEOUT_SECONDS)
         elif provider_name in ("", "none"):
             raise ProviderNotConfiguredError(
                 "No media extraction provider configured. Set EXTRACTION_PROVIDER in environment."
