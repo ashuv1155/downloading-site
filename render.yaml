@@ -1,0 +1,53 @@
+services:
+  # Render Server 1: Primary Backend Web Service
+  - type: web
+    name: saveamedia-backend-primary
+    runtime: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ALLOWED_ORIGINS
+        value: "https://saveamedia.pages.dev,http://localhost:3000"
+      - key: MAX_REQUEST_BODY_BYTES
+        value: "65536"
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "10.0"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"
+      - key: EXTRACTION_PROVIDER
+        value: mock
+
+  # Render Server 2: Secondary Backend Web Service (Failover)
+  - type: web
+    name: saveamedia-backend-secondary
+    runtime: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: ENVIRONMENT
+        value: production
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ALLOWED_ORIGINS
+        value: "https://saveamedia.pages.dev,http://localhost:3000"
+      - key: MAX_REQUEST_BODY_BYTES
+        value: "65536"
+      - key: REQUEST_TIMEOUT_SECONDS
+        value: "10.0"
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "120"
+      - key: EXTRACTION_PROVIDER
+        value: mock
+
