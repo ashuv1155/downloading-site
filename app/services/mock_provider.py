@@ -1,6 +1,7 @@
+import re
 import logging
 from app.services.base import BaseExtractionProvider, MediaUnavailableError
-from app.api.schemas import VideoData, VideoFormat
+from app.api.schemas import VideoData, VideoFormat, AuthorData
 
 logger = logging.getLogger(__name__)
 
@@ -8,45 +9,76 @@ logger = logging.getLogger(__name__)
 class MockExtractionProvider(BaseExtractionProvider):
     """
     Mock extraction provider for local development, automated testing, and CI/CD.
-    Simulates successful extraction and error cases based on shortcode conventions.
-    Does NOT contact Instagram or any external servers.
+    Simulates high-fidelity extraction matching frontend expectations.
     """
     async def extract(self, instagram_url: str) -> VideoData:
         logger.info(f"MockExtractionProvider processing URL: {instagram_url}")
 
-        # Simulate unavailable media if URL contains 'unavailable'
+        # Simulate unavailable media
         if "unavailable" in instagram_url.lower():
             raise MediaUnavailableError("The requested video is unavailable or private.")
 
-        # Simulate timeout if URL contains 'timeout'
+        # Simulate timeout
         if "timeout" in instagram_url.lower():
             from app.services.base import ProviderTimeoutError
             raise ProviderTimeoutError("Provider request timed out.")
 
-        # Extract simulated shortcode
-        shortcode = "mock_shortcode"
+        # Extract shortcode
+        shortcode = "C8k_demoReel"
         parts = instagram_url.strip("/").split("/")
         if parts:
-            shortcode = parts[-1]
+            candidate = parts[-1]
+            if candidate:
+                shortcode = candidate
 
-        # Return mock temporary authorized URL
+        # Sample video and cover assets (using public streaming video for in-browser playback)
+        sample_video_stream = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        sample_thumbnail = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
+        sample_avatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
+
         return VideoData(
-            url=f"https://media.saveamedia.net/mock-cdn/{shortcode}.mp4",
-            thumbnail=f"https://media.saveamedia.net/mock-cdn/{shortcode}-thumb.jpg",
-            title=f"Instagram Reel {shortcode}",
+            id=shortcode,
+            url=sample_video_stream,
+            thumbnail=sample_thumbnail,
+            title=f"Instagram Reel Video ({shortcode})",
+            durationSeconds=28,
+            likesCount=142500,
+            originalReelUrl=instagram_url,
+            author=AuthorData(
+                username="saveamedia_creator",
+                fullName="SaveAMedia Creator",
+                avatarUrl=sample_avatar,
+                isVerified=True,
+            ),
             availableFormats=[
                 VideoFormat(
-                    format_id="hd",
-                    quality="1080p",
+                    id="fmt-1080p",
+                    format_id="fmt-1080p",
+                    quality="1080p Full HD",
+                    resolution="1080x1920",
                     extension="mp4",
-                    url=f"https://media.saveamedia.net/mock-cdn/{shortcode}-1080p.mp4",
+                    url=sample_video_stream,
+                    formattedSize="18.6 MB",
+                    hasAudio=True,
                 ),
                 VideoFormat(
-                    format_id="sd",
-                    quality="720p",
+                    id="fmt-720p",
+                    format_id="fmt-720p",
+                    quality="720p HD",
+                    resolution="720x1280",
                     extension="mp4",
-                    url=f"https://media.saveamedia.net/mock-cdn/{shortcode}-720p.mp4",
+                    url=sample_video_stream,
+                    formattedSize="9.8 MB",
+                    hasAudio=True,
+                ),
+                VideoFormat(
+                    id="fmt-audio",
+                    format_id="fmt-audio",
+                    quality="Audio Only (MP3)",
+                    extension="mp3",
+                    url=sample_video_stream,
+                    formattedSize="2.4 MB",
+                    hasAudio=True,
                 ),
             ],
         )
-

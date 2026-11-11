@@ -1,4 +1,5 @@
 from typing import List, Optional
+from datetime import datetime
 from pydantic import BaseModel, Field, field_validator
 from app.core.security import validate_instagram_url
 
@@ -16,22 +17,41 @@ class ExtractRequest(BaseModel):
 
 
 class VideoFormat(BaseModel):
+    id: Optional[str] = "fmt-1"
     format_id: Optional[str] = None
-    quality: Optional[str] = None
+    quality: Optional[str] = "1080p Full HD"
+    resolution: Optional[str] = "1080x1920"
     extension: Optional[str] = "mp4"
     url: Optional[str] = None
+    formattedSize: Optional[str] = None
+    bitrate: Optional[str] = None
+    hasAudio: bool = True
+
+
+class AuthorData(BaseModel):
+    username: str = "creator"
+    fullName: Optional[str] = None
+    avatarUrl: Optional[str] = None
+    isVerified: bool = False
 
 
 class VideoData(BaseModel):
+    id: Optional[str] = "reel_id"
     url: str
     thumbnail: Optional[str] = None
     title: Optional[str] = None
+    author: Optional[AuthorData] = Field(default_factory=AuthorData)
+    durationSeconds: Optional[int] = 30
+    likesCount: Optional[int] = None
+    extractedAt: Optional[str] = Field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
+    originalReelUrl: Optional[str] = None
     availableFormats: List[VideoFormat] = Field(default_factory=list)
 
 
 class ErrorDetail(BaseModel):
     code: str
     message: str
+    fallbackSuggested: Optional[bool] = False
 
 
 class ExtractSuccessResponse(BaseModel):
@@ -42,4 +62,3 @@ class ExtractSuccessResponse(BaseModel):
 class ExtractFailureResponse(BaseModel):
     success: bool = False
     error: ErrorDetail
-

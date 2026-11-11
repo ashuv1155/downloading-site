@@ -16,8 +16,8 @@ async def test_extract_success_with_mock_provider():
         data = response.json()
         assert data["success"] is True
         assert "video" in data
-        assert data["video"]["url"].startswith("https://media.saveamedia.net/mock-cdn/")
-        assert len(data["video"]["availableFormats"]) == 2
+        assert data["video"]["url"].startswith("http")
+        assert len(data["video"]["availableFormats"]) >= 2
 
 
 @pytest.mark.asyncio
