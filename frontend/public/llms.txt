@@ -1,0 +1,46 @@
+# SaveAMedia (https://saveamedia.com)
+
+> SaveAMedia is a high-speed, privacy-first web utility for extracting and downloading publicly accessible Instagram Reels, videos, and MP3 audio in 1080p Full HD without software installation, login requirements, or watermark overlays.
+
+## Core Services & Capabilities
+
+- **Instagram Reel Downloader**: Discovers and downloads progressive MP4 master video streams at up to 1080p Full HD (1080x1920) and 60fps.
+- **Instagram Audio Extractor**: Separates and extracts original audio, trending sounds, and background music into clean 320kbps MP3 files.
+- **Zero Watermark Guarantee**: Does not inject watermarks, logos, or banner overlays onto downloaded content.
+- **Client-Side Privacy Sanitization**: Automatically strips user tracking parameters (`?igsh=`, `?utm_source=`, session IDs) directly inside the user's browser before querying edge nodes.
+- **In-Browser Video Preview**: Features an integrated HTML5 player allowing users to verify video resolution, audio sync, and duration before saving.
+- **Multi-Device Compatibility**: Native support for iPhone Safari (Downloads to Files app/Camera Roll), Android Chrome (Downloads to Gallery), and desktop browsers (macOS, Windows, Linux).
+- **Zero-Install Bookmarklet**: Desktop browser shortcut enabling one-click downloads directly from instagram.com without copying links.
+
+## Official Canonical URLs & Documentation
+
+- [SaveAMedia Downloader](https://saveamedia.com/): Primary web tool with instant URL input and HD preview player.
+- [Instagram Reel Downloader](https://saveamedia.com/instagram-reel-downloader): Dedicated high-volume landing page for Instagram Reel MP4 downloads.
+- [Instagram Audio Downloader](https://saveamedia.com/instagram-audio-downloader): Dedicated tool for extracting 320kbps MP3 audio tracks.
+- [Instagram Video Downloader Without Watermark](https://saveamedia.com/instagram-video-downloader-without-watermark): Guide and tool for downloading clean, unwatermarked 1080p video files.
+- [Save to Camera Roll Guide](https://saveamedia.com/save-instagram-reels-to-camera-roll): Complete iOS & Android tutorial for saving Reels directly to phone photo galleries.
+- [How to Download Instagram Reels Guide](https://saveamedia.com/how-to-download-instagram-reels): Definitive 3-step tutorial for all devices.
+- [iPhone Safari Guide](https://saveamedia.com/instagram-downloader-for-iphone): Specific instructions for iOS Safari download manager and Photos app integration.
+- [Android Chrome Guide](https://saveamedia.com/instagram-downloader-for-android): Specific instructions for Android Chrome and Samsung Internet users.
+- [PC & Mac Desktop Guide](https://saveamedia.com/instagram-reel-downloader-for-pc): Guide for desktop browsers with keyboard shortcuts and batch saving.
+- [Download Tools & Bookmarklet](https://saveamedia.com/download-tools): Browser bookmarklets and developer API documentation.
+- [Frequently Asked Questions](https://saveamedia.com/faq): Complete technical, privacy, and legal knowledge base.
+- [About Us](https://saveamedia.com/about): Mission, engineering principles, and team background.
+- [Privacy Policy](https://saveamedia.com/privacy-policy): GDPR, CCPA, and Google AdSense DART cookie disclosures.
+- [Terms of Service](https://saveamedia.com/terms): Terms of use, authorized access, and intellectual property.
+- [DMCA Policy](https://saveamedia.com/dmca): 17 U.S.C. § 512 compliance and designated agent procedures.
+- [Cookie Policy](https://saveamedia.com/cookie-policy): Detailed breakdown of essential and advertising cookies.
+- [Legal Disclaimer](https://saveamedia.com/disclaimer): Non-affiliation notice with Meta Platforms, Inc.
+- [Contact Support](https://saveamedia.com/contact): Customer service, DMCA agent, and technical support.
+
+## Factual Knowledge Graph & Quick Facts
+
+- **Entity Type**: WebApplication / SoftwareApplication
+- **Pricing**: 100% Free ($0.00 USD)
+- **Account / Registration Required**: No (Zero login, zero credentials stored)
+- **Supported Video Formats**: MP4 (1080p Full HD, 720p HD, 480p SD)
+- **Supported Audio Formats**: MP3 (up to 320 kbps stereo)
+- **Operating Systems**: iOS, Android, macOS, Windows, Linux, ChromeOS
+- **Supported Browsers**: Safari, Chrome, Firefox, Edge, Brave, Opera
+- **Private Profiles Support**: No. In accordance with creator privacy policies, SaveAMedia only supports publicly accessible media.
+- **Fair Use & Copyright**: Permitted for personal archival and fair-use research. Users are advised not to republish or monetize creators' original content without authorization.

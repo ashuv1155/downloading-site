@@ -1,4 +1,3 @@
-import re
 import logging
 from app.services.base import BaseExtractionProvider, MediaUnavailableError
 from app.api.schemas import VideoData, VideoFormat, AuthorData
@@ -9,7 +8,7 @@ logger = logging.getLogger(__name__)
 class MockExtractionProvider(BaseExtractionProvider):
     """
     Mock extraction provider for local development, automated testing, and CI/CD.
-    Simulates high-fidelity extraction matching frontend expectations.
+    Simulates high-fidelity extraction matching frontend expectations with working media streams.
     """
     async def extract(self, instagram_url: str) -> VideoData:
         logger.info(f"MockExtractionProvider processing URL: {instagram_url}")
@@ -31,8 +30,8 @@ class MockExtractionProvider(BaseExtractionProvider):
             if candidate:
                 shortcode = candidate
 
-        # Sample video and cover assets (using public streaming video for in-browser playback)
-        sample_video_stream = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+        # Working sample stream hosted right on frontend public path for instant playback and download
+        sample_video_stream = "/samples/sample.mp4"
         sample_thumbnail = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80"
         sample_avatar = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80"
 
@@ -41,7 +40,7 @@ class MockExtractionProvider(BaseExtractionProvider):
             url=sample_video_stream,
             thumbnail=sample_thumbnail,
             title=f"Instagram Reel Video ({shortcode})",
-            durationSeconds=28,
+            durationSeconds=15,
             likesCount=142500,
             originalReelUrl=instagram_url,
             author=AuthorData(

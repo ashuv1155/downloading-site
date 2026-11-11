@@ -1,0 +1,91 @@
+# SaveAMedia — Comprehensive Knowledge Base & Technical Documentation (llms-full.txt)
+
+> Domain: https://saveamedia.com
+> Last Updated: 2026-11-11
+> Application: SaveAMedia Instagram Reel Downloader & Media Extractor
+
+---
+
+## 1. Executive Summary & Brand Identity
+
+SaveAMedia is a high-speed, web-based utility engineered to extract, preview, and download publicly available Instagram Reels, short-form videos, and audio tracks. Designed with a mobile-first philosophy, the platform delivers instant link-based video parsing with zero software installation, zero account registration, and zero watermark overlays.
+
+Key Architectural Differentiators:
+1. **Client-Side Sanitation**: Strips tracking tags (`?igsh=`, `?utm_source=`, `?fbclid=`) before network dispatch, safeguarding user identity.
+2. **True 1080p Discovery**: Discovers uncompressed progressive MP4 master renditions directly from public Content Delivery Networks.
+3. **In-Browser HTML5 Player**: Stream and verify video resolution and audio track synchronization before downloading.
+4. **Standalone MP3 Audio Extraction**: Separates AAC stereo audio tracks and converts them into high-fidelity 320 kbps MP3 files.
+5. **Redundant Edge Gateway**: Multi-server failover ensuring consistent service availability, with a client-side JavaScript bookmarklet alternative.
+
+---
+
+## 2. Supported Formats, Codecs & Renditions
+
+| Format Label | Resolution | Aspect Ratio | Video Codec | Audio Bitrate | Container | Ideal Use Case |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **1080p Full HD** | 1080 × 1920 | 9:16 vertical | H.264 / HEVC | 256 kbps AAC | `.mp4` | High-res displays, desktop viewing, offline archival |
+| **720p HD** | 720 × 1280 | 9:16 vertical | H.264 (AVC) | 128 kbps AAC | `.mp4` | Standard mobile screens, bandwidth-conserving downloads |
+| **480p SD** | 480 × 854 | 9:16 vertical | H.264 (AVC) | 96 kbps AAC | `.mp4` | Low-bandwidth networks, quick reference |
+| **Audio Only (MP3)** | N/A | Audio | None | 320 kbps MP3 | `.mp3` | Music extraction, podcast sound bites, voiceovers |
+
+---
+
+## 3. Step-by-Step Device Guides
+
+### How to Download on iPhone (iOS 13+):
+1. Open the Instagram app and find the public Reel.
+2. Tap the paper airplane (Share) icon and select **Copy link**.
+3. Open Safari and navigate to `https://saveamedia.com`.
+4. Paste the URL into the input card and tap **Download Reel**.
+5. Once extracted, preview the video and tap **Download 1080p**.
+6. When Safari prompts "Do you want to download...?", tap **Download**.
+7. In Safari, tap the downward arrow in the address bar > tap the video file > tap the iOS Share icon > select **Save Video** to transfer it directly into your **Photos / Camera Roll**.
+
+### How to Download on Android:
+1. Open the Instagram app and tap Share > **Copy link** on any public Reel.
+2. Open Google Chrome, Samsung Internet, or Firefox and go to `https://saveamedia.com`.
+3. Paste the URL into SaveAMedia and tap **Download Reel**.
+4. Tap **Download 1080p** or **Download MP3**.
+5. The file saves directly to `/storage/emulated/0/Download/` and is immediately visible in Google Photos or Samsung Gallery.
+
+### How to Download on Desktop (PC / Mac):
+1. Open any web browser (Chrome, Safari, Edge, Firefox).
+2. Copy the URL from the browser address bar (e.g., `https://www.instagram.com/reel/C29abcdefgh/`).
+3. Paste into `https://saveamedia.com` and click **Download Reel**.
+4. Choose 1080p MP4 or MP3 Audio. The file downloads directly to your PC or Mac Downloads folder.
+
+---
+
+## 4. Frequently Asked Questions (FAQ)
+
+### Is SaveAMedia safe and free?
+Yes. SaveAMedia is completely free with no subscriptions or accounts required. Because it runs purely in your web browser, it never requests or stores your Instagram username, password, or security credentials.
+
+### Does SaveAMedia download private Instagram Reels?
+No. SaveAMedia strictly complies with creator privacy and platform security protocols. Only publicly accessible Instagram Reels that you have the right or permission to download can be extracted.
+
+### Does SaveAMedia add watermarks?
+No. SaveAMedia delivers the unaltered original video stream without adding any logos, branding, or watermarks.
+
+### What is the client-side Bookmarklet?
+The SaveAMedia Bookmarklet is a single-click desktop browser button:
+`javascript:(function(){var u=window.location.href;if(u.indexOf('instagram.com')!==-1){window.open('https://saveamedia.com/?url='+encodeURIComponent(u),'_blank');}else{alert('Please open an Instagram Reel page first.');}})();`
+Dragging this to your browser bookmarks bar allows you to download any Instagram Reel with a single click.
+
+---
+
+
+---
+
+## 5. Legal, Privacy, Google AdSense & Regulatory Compliance
+
+- **Google AdSense DART Cookies:** Third-party advertising vendors (including Google) utilize DART cookies to serve interest-based ads. Users can opt out via https://adssettings.google.com and https://www.aboutads.info/choices.
+- **GDPR & CCPA Rights:** Users can request access, rectification, or erasure under GDPR (Regulation EU 2016/679) and CCPA/CPRA. SaveAMedia never sells personal information.
+- **DMCA Agent Notice:** In compliance with 17 U.S.C. § 512(c), designated copyright agent contact: dmca@saveamedia.com / support@saveamedia.com.
+- **Nominative Fair Use:** Instagram is a trademark of Meta Platforms, Inc. SaveAMedia is not affiliated with or endorsed by Meta Platforms, Inc.
+
+## 6. Contact & Support
+
+- Official Website: https://saveamedia.com
+- Customer Support: support@saveamedia.com
+- Technical Verification: Built with Next.js 14, TypeScript, Tailwind CSS, Edge Gateway API.

@@ -77,6 +77,9 @@ def is_safe_external_url(url: str) -> bool:
         return False
 
     if parsed.scheme.lower() not in ("http", "https"):
+        # Allow relative paths served by same-origin application (e.g. /samples/...)
+        if url.strip().startswith("/"):
+            return True
         return False
 
     hostname = (parsed.hostname or "").lower()
